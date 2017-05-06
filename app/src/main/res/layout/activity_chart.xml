@@ -2,43 +2,67 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="#abff03"
     android:orientation="vertical">
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:stretchColumns="1">
-        <TableRow
-            >
+
+        <TableRow>
+
             <EditText
                 android:id="@+id/editDateStart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Nhập ngày đầu"/>
+                android:hint="Nhập ngày đầu" />
+
             <EditText
                 android:id="@+id/editDateEnd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Nhập ngày cuối"/>
+                android:hint="Nhập ngày cuối" />
         </TableRow>
-        <TableRow
-            >
-            <Button
-                android:id="@+id/btnNhiet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#25ef06"
 
-                android:text="Xem biểu đồ nhiệt"/>
+        <TableRow>
+
+
+            <RadioGroup android:id="@+id/radioGroup">
+
+                <RadioButton
+                    android:id="@+id/radioNhietDo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nhiệt độ" />
+
+                <RadioButton
+                    android:id="@+id/radioDoAm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Độ ẩm" />
+
+
+            </RadioGroup>
+        </TableRow>
+    </TableLayout>
+
             <Button
                 android:id="@+id/btnDoAm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#25ef06"
-                android:text="Xem biểu đồ độ ẩm"/>
-        </TableRow>
-    </TableLayout>
+                android:layout_gravity="center_horizontal"
+                android:text="Xem biểu đồ"
+                android:background="#0cce62"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:textColor="#0822d1" />
+
+
+
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/chart"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

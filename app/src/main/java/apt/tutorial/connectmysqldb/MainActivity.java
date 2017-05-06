@@ -4,12 +4,17 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.app.TabActivity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -52,7 +57,8 @@ public class MainActivity extends TabActivity {
     private Calendar calendar;
     private TextView dateView;
     private int year, month, day;
-    Button btnLoad, btnPast,btnPickDate;
+    Button btnPast,btnPickDate;
+    WebView webViewTinKhuyenNong;
     TextView tvDate;
     EditText editTmp, editHum, editStt;
     ArrayList<String> labels = new ArrayList<String>();
@@ -70,7 +76,7 @@ public class MainActivity extends TabActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toast.makeText(MainActivity.this,"Chọn ngày hiện tại hoặc ngày vừa chọn để xem thông tin thời tiết",Toast.LENGTH_LONG).show();
+        //Toast.makeText(MainActivity.this,"Chọn ngày hiện tại hoặc ngày vừa chọn để xem thông tin thời tiết",Toast.LENGTH_LONG).show();
         TabHost.TabSpec spec = getTabHost().newTabSpec("tag1");
         spec.setContent(R.id.thongtin);
         spec.setIndicator("Thời tiết");
@@ -106,10 +112,6 @@ public class MainActivity extends TabActivity {
                 });
             }
         });
-        btnLoad = (Button) findViewById(R.id.btnGetDataNow);
-        btnLoad.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -117,8 +119,7 @@ public class MainActivity extends TabActivity {
                         // goi ham gui cac gia tri len trang php
                     }
                 });
-            }
-        });
+
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
 
@@ -132,7 +133,20 @@ public class MainActivity extends TabActivity {
                 showDialog(999);
             }
         });
+        webViewTinKhuyenNong = (WebView)findViewById(R.id.webViewTinNongNghiep);
 
+        ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+
+        if (networkInfo != null && networkInfo.isConnected()) {
+            webViewTinKhuyenNong.loadUrl("http://www.khuyennongvn.gov.vn/tu-van-hoi-dap_t113c48");
+            webViewTinKhuyenNong.setWebViewClient(new WebViewClient());
+        }
+        else{
+            //setContentView(R.layout.no_internet_access);
+            Toast.makeText(MainActivity.this,"Kiểm tra lại kết nối với 3G hoặc wifi",Toast.LENGTH_LONG).show();
+
+        }
 
 
 

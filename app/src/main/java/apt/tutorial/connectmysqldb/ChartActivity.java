@@ -4,12 +4,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
@@ -50,38 +53,40 @@ public class ChartActivity extends Activity {
     ArrayList<String> labels = new ArrayList<String>();
     BarChart barChart = null;
     EditText editDateStart, editDateEnd;
-    Button btnNhiet,btnDoAm;
+    Button btnDoAm;
     BarDataSet barDataSet;
     BarData barData;
-    String flag;
+    String flag = "temp";
+    RadioGroup radioGroup;
+    RadioButton radioButtonNhiet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_chart);
-        Toast.makeText(ChartActivity.this,"Chọn ngày bắt đầu và ngày kết thúc để xem biểu đồ dữ liệu",Toast.LENGTH_LONG).show();
+        //Toast.makeText(ChartActivity.this,"Chọn ngày bắt đầu và ngày kết thúc để xem biểu đồ dữ liệu",Toast.LENGTH_LONG).show();
         barChart = (BarChart) findViewById(R.id.chart);
         editDateStart = (EditText) findViewById(R.id.editDateStart);
         editDateEnd = (EditText) findViewById(R.id.editDateEnd);
-        btnNhiet = (Button) findViewById(R.id.btnNhiet);
-        btnDoAm = (Button) findViewById(R.id.btnDoAm);
-        btnNhiet.setOnClickListener(new View.OnClickListener() {
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        radioButtonNhiet = (RadioButton) findViewById(R.id.radioNhietDo);
+        radioButtonNhiet.setChecked(true);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        entries.clear();
-                        labels.clear();
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                switch (group.getCheckedRadioButtonId()) {
+                    case R.id.radioNhietDo:
                         flag = "temp";
-                        new DocJSON2().execute("http://192.168.1.100:80/trung/selectToChart.php");
-                        // goi ham gui cac gia tri len trang php
-                    }
-                });
-
+                        break;
+                    case R.id.radioDoAm:
+                        flag = "humid";
+                        break;
+                }
             }
         });
+
+        btnDoAm = (Button) findViewById(R.id.btnDoAm);
         btnDoAm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,7 +95,7 @@ public class ChartActivity extends Activity {
                     public void run() {
                         entries.clear();
                         labels.clear();
-                        flag = "humid";
+
                         new DocJSON2().execute("http://192.168.1.100:80/trung/selectToChart.php");
                         // goi ham gui cac gia tri len trang php
                     }

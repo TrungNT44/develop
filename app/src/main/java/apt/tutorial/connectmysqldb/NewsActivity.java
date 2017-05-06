@@ -1,14 +1,19 @@
 package apt.tutorial.connectmysqldb;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.webkit.WebViewClient;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -43,15 +48,37 @@ ListView lvNews;
             }
         });
         newsArrayList = new ArrayList<News>();
+        Button btnLoadMore = new Button(this);
+        btnLoadMore.setText("Load More");
+        btnLoadMore.setOnClickListener(new View.OnClickListener() {
 
-
-        runOnUiThread(new Runnable() {
             @Override
-            public void run() {
-                new ReadData().execute("http://vnexpress.net/rss/kinh-doanh.rss");
-				//new ReadData().execute("http://nongnghiep.vn/rss/khuyen-nong-7.rss");
+            public void onClick(View arg0) {
+                // Starting a new async task
+                //new loadMoreListView().execute();
             }
         });
+        // Adding Load More button to lisview at bottom
+        lvNews.addFooterView(btnLoadMore);
+
+        ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+
+        if (networkInfo != null && networkInfo.isConnected()) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    new ReadData().execute("http://vnexpress.net/rss/kinh-doanh.rss");
+                    //new ReadData().execute("http://nongnghiep.vn/rss/khuyen-nong-7.rss");
+                }
+            });
+        }
+        else{
+            setContentView(R.layout.no_internet_access);
+            Toast.makeText(NewsActivity.this,"Kiểm tra lại kết nối với 3G hoặc wifi",Toast.LENGTH_LONG).show();
+
+        }
+
     }
     class ReadData extends AsyncTask<String ,Integer,String>{
         @Override
