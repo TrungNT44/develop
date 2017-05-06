@@ -1,0 +1,163 @@
+-- phpMyAdmin SQL Dump
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: May 06, 2017 at 08:03 AM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 5.6.30
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `trung`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nongnghiep`
+--
+
+CREATE TABLE `nongnghiep` (
+  `ID` int(11) NOT NULL,
+  `Date` date NOT NULL,
+  `Temperature` double NOT NULL,
+  `Humidity` float NOT NULL,
+  `Status` varchar(30) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `nongnghiep`
+--
+
+INSERT INTO `nongnghiep` (`ID`, `Date`, `Temperature`, `Humidity`, `Status`) VALUES
+(0, '2017-01-01', 30, 70, 'troi nang'),
+(1, '2017-03-30', 30, 60, 'troi nang'),
+(2, '2017-03-29', 36, 60, 'troi nang'),
+(3, '2017-03-28', 38, 78, 'troi nang'),
+(4, '2017-01-02', 25, 60, 'troi nang'),
+(5, '2017-01-28', 25, 60, 'troi mua'),
+(6, '2017-01-04', 28, 68, 'troi mua'),
+(7, '2017-01-05', 30, 45, 'troi nang'),
+(8, '2017-01-06', 29, 67, 'troi mua'),
+(9, '2017-01-07', 28, 66, 'troi mua'),
+(10, '2017-01-08', 25, 60, 'troi mua'),
+(11, '2017-01-09', 28, 40, 'troi nang'),
+(12, '2017-01-10', 32, 50, 'troi nang'),
+(13, '2017-01-11', 33, 57, 'troi nang'),
+(14, '2017-01-12', 35, 40, 'troi nang'),
+(15, '2017-01-13', 35, 45, 'troi nang'),
+(16, '2016-12-29', 21, 70, 'troi nang'),
+(17, '2017-02-13', 23, 61, 'troi nang'),
+(18, '2017-01-03', 34, 73, 'troi nang'),
+(19, '2017-03-07', 28, 74, 'troi nang'),
+(20, '2017-03-16', 33, 51, 'troi nang'),
+(21, '2017-03-09', 23, 73, 'troi nang'),
+(22, '2017-01-14', 24, 72, 'troi nang'),
+(23, '2016-12-30', 20, 80, 'troi nang'),
+(24, '2017-03-08', 31, 58, 'troi nang'),
+(25, '2017-02-02', 27, 53, 'troi nang'),
+(26, '2017-03-10', 31, 48, 'troi nang'),
+(27, '2017-01-15', 34, 73, 'troi nang'),
+(28, '2017-01-16', 28, 74, 'troi nang'),
+(29, '2017-01-29', 33, 51, 'troi nang'),
+(30, '2017-03-12', 23, 73, 'troi nang'),
+(31, '2017-01-17', 24, 72, 'troi nang'),
+(32, '2016-12-31', 20, 80, 'troi nang'),
+(33, '2017-03-20', 31, 58, 'troi nang'),
+(34, '2017-02-05', 27, 53, 'troi nang'),
+(35, '2017-02-16', 21, 70, 'troi nang'),
+(36, '2017-01-20', 23, 61, 'troi nang'),
+(37, '2017-01-18', 21, 70, 'troi nang'),
+(38, '2017-01-19', 23, 61, 'troi nang'),
+(39, '2017-01-21', 34, 73, 'troi nang'),
+(40, '2017-01-22', 28, 74, 'troi nang'),
+(41, '2017-01-23', 33, 51, 'troi nang'),
+(42, '2017-01-24', 23, 73, 'troi nang'),
+(43, '2017-01-25', 24, 72, 'troi nang'),
+(44, '2017-01-26', 20, 80, 'troi nang'),
+(45, '2017-01-27', 31, 58, 'troi nang'),
+(46, '0000-00-00', 27, 53, 'troi nang'),
+(47, '2017-02-03', 21, 70, 'troi nang'),
+(48, '2017-02-04', 23, 61, 'troi nang'),
+(49, '2017-02-06', 34, 73, 'troi nang'),
+(50, '2017-02-07', 28, 74, 'troi nang'),
+(51, '2017-02-08', 33, 51, 'troi nang'),
+(52, '2017-02-09', 23, 73, 'troi nang'),
+(53, '2017-02-10', 24, 72, 'troi nang'),
+(54, '2017-02-11', 20, 80, 'troi nang'),
+(55, '2017-02-12', 31, 58, 'troi nang'),
+(56, '2017-02-14', 27, 53, 'troi nang'),
+(57, '2017-02-17', 21, 70, 'troi mua'),
+(58, '2017-02-18', 23, 61, 'troi nang'),
+(59, '2017-02-19', 34, 73, 'troi nang'),
+(60, '2017-02-20', 28, 74, 'troi nang'),
+(61, '2017-02-21', 33, 51, 'troi nang'),
+(62, '2017-02-22', 23, 73, 'troi mua'),
+(63, '2017-02-23', 24, 72, 'troi mua'),
+(64, '2017-02-24', 20, 80, 'troi nang'),
+(65, '2017-02-25', 31, 58, 'troi mua'),
+(66, '2017-02-26', 27, 53, 'troi mua'),
+(67, '2017-02-27', 21, 70, 'troi mua'),
+(68, '2017-02-28', 23, 61, 'troi nang'),
+(69, '2017-03-01', 34, 73, 'troi nang'),
+(70, '2017-03-02', 28, 74, 'troi nang'),
+(71, '2017-03-03', 33, 51, 'troi nang'),
+(72, '2017-03-04', 23, 73, 'troi mua'),
+(73, '2017-03-05', 24, 72, 'troi mua'),
+(74, '2017-03-06', 20, 80, 'troi nang'),
+(75, '2017-03-11', 31, 58, 'troi mua'),
+(76, '2017-03-13', 27, 53, 'troi mua'),
+(77, '2017-03-14', 21, 70, 'troi mua'),
+(78, '2017-03-15', 23, 61, 'troi nang'),
+(79, '2017-03-17', 34, 73, 'troi nang'),
+(80, '2017-03-18', 28, 74, 'troi nang'),
+(81, '2017-03-19', 33, 51, 'troi nang'),
+(82, '2017-03-21', 23, 73, 'troi mua'),
+(83, '2017-03-22', 24, 72, 'troi mua'),
+(84, '2017-03-23', 20, 80, 'troi nang'),
+(85, '2017-03-24', 31, 58, 'troi mua'),
+(86, '2017-03-25', 27, 53, 'troi mua'),
+(87, '2017-03-26', 21, 70, 'troi mua'),
+(88, '2017-03-27', 23, 61, 'troi nang'),
+(89, '2017-04-01', 34, 73, 'troi nang'),
+(90, '2017-04-02', 28, 74, 'troi nang'),
+(91, '2017-04-03', 33, 51, 'troi nang'),
+(92, '2017-04-05', 23, 73, 'troi mua'),
+(93, '2017-04-06', 24, 72, 'troi mua'),
+(94, '2017-04-07', 20, 80, 'troi nang'),
+(95, '2017-04-08', 31, 58, 'troi mua'),
+(96, '2017-04-09', 27, 53, 'troi mua'),
+(97, '2017-04-10', 21, 70, 'troi mua'),
+(98, '2017-04-11', 23, 61, 'troi nang'),
+(99, '2017-04-12', 34, 73, 'troi nang'),
+(100, '2017-04-13', 28, 74, 'troi nang'),
+(101, '2017-04-14', 33, 51, 'troi nang'),
+(102, '2017-04-15', 23, 73, 'troi mua'),
+(103, '2017-04-16', 24, 72, 'troi mua'),
+(104, '2017-04-17', 20, 80, 'troi nang'),
+(105, '2017-04-18', 31, 58, 'troi mua'),
+(106, '2017-04-19', 27, 53, 'troi mua');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `nongnghiep`
+--
+ALTER TABLE `nongnghiep`
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `Date` (`Date`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
