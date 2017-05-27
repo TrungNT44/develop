@@ -106,7 +106,7 @@ public class MainActivity extends TabActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        new DocJSON().execute("http://192.168.1.100:80/trung/select.php");
+                        new DocJSON().execute("http://192.168.1.104:80/trung/select.php");
                         // goi ham gui cac gia tri len trang php
                     }
                 });
@@ -115,7 +115,7 @@ public class MainActivity extends TabActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        new DocJSON().execute("http://192.168.1.100:80/trung/display.php");
+                        new DocJSON().execute("http://192.168.1.104:80/trung/display.php");
                         // goi ham gui cac gia tri len trang php
                     }
                 });
