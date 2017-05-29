@@ -58,7 +58,6 @@ public class MainActivity extends TabActivity {
     private TextView dateView;
     private int year, month, day;
     Button btnPast,btnPickDate;
-    WebView webViewTinKhuyenNong;
     TextView tvDate;
     EditText editTmp, editHum, editStt;
     ArrayList<String> labels = new ArrayList<String>();
@@ -89,7 +88,7 @@ public class MainActivity extends TabActivity {
 
         spec=getTabHost().newTabSpec("tag3");
         spec.setContent(new Intent(this,NewsActivity.class));
-        spec.setIndicator("Tin tức");
+        spec.setIndicator("Tư vấn");
         getTabHost().addTab(spec);
 
         getTabHost().setCurrentTab(0);
@@ -133,20 +132,10 @@ public class MainActivity extends TabActivity {
                 showDialog(999);
             }
         });
-        webViewTinKhuyenNong = (WebView)findViewById(R.id.webViewTinNongNghiep);
 
         ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = manager.getActiveNetworkInfo();
 
-        if (networkInfo != null && networkInfo.isConnected()) {
-            webViewTinKhuyenNong.loadUrl("http://www.khuyennongvn.gov.vn/tu-van-hoi-dap_t113c48");
-            webViewTinKhuyenNong.setWebViewClient(new WebViewClient());
-        }
-        else{
-            //setContentView(R.layout.no_internet_access);
-            Toast.makeText(MainActivity.this,"Kiểm tra lại kết nối với 3G hoặc wifi",Toast.LENGTH_LONG).show();
-
-        }
 
 
 

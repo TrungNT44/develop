@@ -69,7 +69,7 @@
                 <TableLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="20dp"
                     android:stretchColumns="1">
 
                     <TableRow>
@@ -112,7 +112,7 @@
                             android:id="@+id/tvStt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Trạng thái"
+                            android:text="Độ ẩm đất"
                             android:textColor="#000000"
                             android:textSize="20dp" />
 
@@ -122,26 +122,30 @@
                             android:layout_height="wrap_content"
                             android:textColor="#f11d01" />
                     </TableRow>
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/tvMoisHumid"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ánh sáng"
+                            android:textColor="#000000"
+                            android:textSize="20dp" />
+
+                        <EditText
+                            android:id="@+id/editMoisHumid"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#f11d01" />
+                    </TableRow>
+
 
 
                 </TableLayout>
 
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Tin Khuyến nông"
-                    android:layout_marginTop="10dp"
-                    android:background="#0c59df"
-                    android:textSize="24dp"/>
-
-                <WebView
-                    android:id="@+id/webViewTinNongNghiep"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
 
 
-                </WebView>
 
             </LinearLayout>
         </FrameLayout>

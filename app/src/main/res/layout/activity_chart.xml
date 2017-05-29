@@ -16,13 +16,13 @@
                 android:id="@+id/editDateStart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Nhập ngày đầu" />
+                android:hint="Chọn ngày đầu" />
 
             <EditText
                 android:id="@+id/editDateEnd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Nhập ngày cuối" />
+                android:hint="Chọn ngày cuối" />
         </TableRow>
 
         <TableRow>
