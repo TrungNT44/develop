@@ -1,6 +1,8 @@
 package apt.tutorial.connectmysqldb;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -30,121 +32,46 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class NewsActivity extends Activity {
-ListView lvNews;
-    CustomAdapter customAdapter;
-    ArrayList<News> newsArrayList;
+
+    Button btnAlarm,btnCancelAlarm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
-        lvNews = (ListView) findViewById(R.id.lvNews);
-        lvNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        btnAlarm = (Button) findViewById(R.id.btnAlarm);
+        btnCancelAlarm= (Button) findViewById(R.id.btnCancelAlarm);
+
+        btnAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(NewsActivity.this, NewsDetailActivity.class);
-                intent.putExtra("link",newsArrayList.get(position).link);
-                startActivity(intent);
+            public void onClick(View v) {
+                startSchedulerAlarm();
             }
         });
-        newsArrayList = new ArrayList<News>();
-        Button btnLoadMore = new Button(this);
-        btnLoadMore.setText("Load More");
-        btnLoadMore.setOnClickListener(new View.OnClickListener() {
-
+        btnCancelAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View arg0) {
-                // Starting a new async task
-                //new loadMoreListView().execute();
+            public void onClick(View v) {
+                stopSchedulerAlarm();
             }
         });
-        // Adding Load More button to lisview at bottom
-        lvNews.addFooterView(btnLoadMore);
-
-        ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
-
-        if (networkInfo != null && networkInfo.isConnected()) {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    new ReadData().execute("http://vnexpress.net/rss/kinh-doanh.rss");
-                    //new ReadData().execute("http://nongnghiep.vn/rss/khuyen-nong-7.rss");
-                }
-            });
-        }
-        else{
-            setContentView(R.layout.no_internet_access);
-            Toast.makeText(NewsActivity.this,"Kiểm tra lại kết nối với 3G hoặc wifi",Toast.LENGTH_LONG).show();
-
-        }
+    }
+    void startSchedulerAlarm() {
+        int oneMinute = 1 * (5 * 1000); //Trigger Every 1 Minute
+        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlarmReceiver.class);
+        intent.putExtra("alarm", "on");
+        intent.setAction(AlarmReceiver.alaramIntent);
+        PendingIntent alarmIntent = PendingIntent.getBroadcast(this, AlarmReceiver.alarmIntentCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), oneMinute, alarmIntent);
 
     }
-    class ReadData extends AsyncTask<String ,Integer,String>{
-        @Override
-        protected String doInBackground(String... params) {
-
-            return docNoiDung_Tu_URL(params[0]);
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            XMLDOMParser xmldomParser = new XMLDOMParser();
-            Document doccument = xmldomParser.getDocument(s);
-            NodeList nodeList = doccument.getElementsByTagName("item");
-            NodeList nodeListDescription = doccument.getElementsByTagName("description");
-            String hinhAnh = "";
-            String title = "";
-            String link ="";
-            for (int i =0;i<nodeList.getLength();i++) {
-                String cData = nodeListDescription.item(i + 1).getTextContent();
-                Pattern pattern = Pattern.compile("<img[^>]+src\\s*=\\s*['\"]([^'\"]+)['\"][^>]*>");
-                Matcher matcher = pattern.matcher(cData);
-                if (matcher.find()){
-                    hinhAnh = matcher.group(1);
-
-                }
-                Element element = (Element) nodeList.item(i);
-                title = xmldomParser.getValue(element, "title");
-                link = xmldomParser.getValue(element, "link");
-                newsArrayList.add(new News(hinhAnh,link,title));
-
-            }
-            customAdapter = new CustomAdapter(NewsActivity.this, android.R.layout.simple_list_item_1, newsArrayList);
-            lvNews.setAdapter(customAdapter);
-
-            super.onPostExecute(s);
-
-        }
-    }
-    private static String docNoiDung_Tu_URL(String theUrl)
-    {
-        StringBuilder content = new StringBuilder();
-
-        try
-        {
-            // create a url object
-            URL url = new URL(theUrl);
-
-            // create a urlconnection object
-            URLConnection urlConnection = url.openConnection();
-
-            // wrap the urlconnection in a bufferedreader
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-
-            String line;
-
-            // read from the urlconnection via the bufferedreader
-            while ((line = bufferedReader.readLine()) != null)
-            {
-                content.append(line + "\n");
-            }
-            bufferedReader.close();
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-        return content.toString();
+    void stopSchedulerAlarm() {
+        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlarmReceiver.class);
+        intent.putExtra("alarm", "off");
+        sendBroadcast(intent);
+        intent.setAction(AlarmReceiver.alaramIntent);
+        PendingIntent alarmIntent = PendingIntent.getBroadcast(this, AlarmReceiver.alarmIntentCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        alarmManager.cancel(alarmIntent);
     }
 }

@@ -5,10 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="apt.tutorial.connectmysqldb.NewsActivity">
-    <ListView
-        android:id="@+id/lvNews"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </ListView>
+    <Button
+        android:id="@+id/btnAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="alarm"/>
+    <Button
+        android:id="@+id/btnCancelAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="cancel alarm"
+        android:layout_below="@+id/btnAlarm"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="21dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="82dp" />
 </RelativeLayout>

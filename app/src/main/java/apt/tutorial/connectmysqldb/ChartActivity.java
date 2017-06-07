@@ -65,6 +65,8 @@ public class ChartActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_chart);
+        
+
         //Toast.makeText(ChartActivity.this,"Chọn ngày bắt đầu và ngày kết thúc để xem biểu đồ dữ liệu",Toast.LENGTH_LONG).show();
         barChart = (BarChart) findViewById(R.id.chart);
         editDateStart = (EditText) findViewById(R.id.editDateStart);

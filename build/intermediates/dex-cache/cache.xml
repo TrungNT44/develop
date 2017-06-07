@@ -21,6 +21,24 @@
     </item>
     <item
         is-multidex="false"
+        jar="D:\SDK\extras\android\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.0-alpha1\constraint-layout-solver-1.0.0-alpha1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="78d61c347aa5002119e3c17bffcbebf28fe07b0b">
+        <dex dex="D:\hoc tap\ConnectMySqlDB\app\build\intermediates\pre-dexed\debug\constraint-layout-solver-1.0.0-alpha1_60cbcf820b02c6955f157038907b529df6d5abbc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Trung1994\.android\build-cache\b22c0199ee7f6f2394c8a6235f50d801d0e6d74b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ea579447f9afb1fbcb28e150e1cd4bfe7f56e75b">
+        <dex dex="D:\hoc tap\ConnectMySqlDB\app\build\intermediates\pre-dexed\debug\classes_05f3f124648973394d976f63f3f2230083bc3a5e.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="C:\Users\Trung1994\.android\build-cache\5f253a37a82749dd198b5a3d4f1f1aff1c624828\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"

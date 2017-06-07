@@ -1,7 +1,9 @@
 package apt.tutorial.connectmysqldb;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.app.TabActivity;
 import android.content.Context;
@@ -87,7 +89,7 @@ public class MainActivity extends TabActivity {
         getTabHost().addTab(spec);
 
         spec=getTabHost().newTabSpec("tag3");
-        spec.setContent(new Intent(this,NewsActivity.class));
+        spec.setContent(new Intent(this,HelpActivity.class));
         spec.setIndicator("Tư vấn");
         getTabHost().addTab(spec);
 
@@ -219,7 +221,12 @@ public class MainActivity extends TabActivity {
                         JSONObject objectJSON = mangJSON.getJSONObject(i);
                         if (!objectJSON.get("date").toString().equals("0000-00-00")) {
                             tvDate.setText(objectJSON.get("date").toString());
+
                             editTmp.setText(objectJSON.get("temp").toString()+" độ C");
+                            Double  tempDouble = objectJSON.getDouble("temp");
+                            /*if ( (tempDouble > 25.0f) ||  (tempDouble < 20.0f)){
+                                startSchedulerAlarm();
+                            }*/
                             editHum.setText(objectJSON.get("humid").toString());
                             editStt.setText(objectJSON.get("stt").toString());
                         } else
@@ -236,6 +243,15 @@ public class MainActivity extends TabActivity {
 
         }
     }
+    /*public void startSchedulerAlarm() {
+        int oneMinute = 1 * (10 * 1000); //Trigger Every 1 Minute
+        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlarmReceiver.class);
+        intent.setAction(AlarmReceiver.alaramIntent);
+        PendingIntent alarmIntent = PendingIntent.getBroadcast(this, AlarmReceiver.alarmIntentCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), oneMinute, alarmIntent);
+
+    }*/
 
 
 }
