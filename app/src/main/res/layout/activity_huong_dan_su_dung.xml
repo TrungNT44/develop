@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="apt.tutorial.connectmysqldb.HuongDanSuDungActivity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#aa143aae"
+        android:textAllCaps="true"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:text="Hướng dẫn sử dụng ứng dụng"/>
+
+    <TextView
+        android:id="@+id/tvMoTaChucNang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+		android:singleLine="false"
+        android:layout_marginTop="20dp"/>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+		android:shrinkColumns="0">
+        <TableRow>
+            <TextView
+                android:text="Xem dữ liệu"/>
+            <TextView
+                android:id="@+id/tvChucNangXemDL"
+				android:singleLine="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </TableRow>
+        <TableRow>
+        <TextView
+            android:id="@+id/tvChucNangXemBD"
+            android:layout_width="match_parent"
+			android:singleLine="false"
+            android:layout_height="wrap_content"/>
+    </TableRow>
+
+    </TableLayout>
+
+
+</LinearLayout>

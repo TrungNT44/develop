@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+
+    tools:context="apt.tutorial.connectmysqldb.AuthorActivity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:text="Thông tin ứng dụng"/>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+		android:shrinkColumns="0"
+        android:stretchColumns="*">
+        <TableRow
+
+            >
+            <TextView
+                android:text="Tác giả"/>
+            <TextView
+                android:id="@+id/tvTacGia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nguyễn Thành Trung"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Đơn vị"/>
+            <TextView
+                android:id="@+id/tvDonVi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+				android:singleLine="false"
+                android:text="Viện Điện tử viễn thông Đại học Bách Khoa Hà Nội"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Phiên bản"/>
+            <TextView
+                android:id="@+id/tvPhienban"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Phiên bản 1.0.1"/>
+        </TableRow>
+    </TableLayout>
+</LinearLayout>

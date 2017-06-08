@@ -107,7 +107,7 @@ public class MainActivity extends TabActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        new DocJSON().execute("http://192.168.1.104:80/trung/select.php");
+                        new DocJSON().execute("http://192.168.1.103:80/trung/select.php");
                         // goi ham gui cac gia tri len trang php
                     }
                 });
@@ -116,7 +116,7 @@ public class MainActivity extends TabActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        new DocJSON().execute("http://192.168.1.104:80/trung/display.php");
+                        new DocJSON().execute("http://192.168.1.103:80/trung/display.php");
                         // goi ham gui cac gia tri len trang php
                     }
                 });
@@ -156,13 +156,13 @@ public class MainActivity extends TabActivity {
             };
 
     private void showDate(int year, int month, int day) {
-        if ( month >= 10) {
+        if ( day>= 10 || month >= 10) {
             tvDate.setText(new StringBuilder().append(year).append("-")
                     .append(month).append("-").append(day));
         }
         else{
             tvDate.setText(new StringBuilder().append(year).append("-0")
-                    .append(month).append("-").append(day));
+                    .append(month).append("-0").append(day));
         }
     }
 
@@ -213,7 +213,7 @@ public class MainActivity extends TabActivity {
             if (!s.isEmpty()) {
                 try {
                     JSONArray mangJSON = new JSONArray(s);
-                    tvDate.setText("");
+                    //tvDate.setText("");
                     editTmp.setText("");
                     editHum.setText("");
                     editStt.setText("");

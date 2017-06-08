@@ -13,7 +13,7 @@
             android:id="@android:id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#0080ff"></TabWidget>
+            android:background="#0676de"></TabWidget>
 
         <FrameLayout
             android:id="@android:id/tabcontent"
@@ -58,7 +58,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="26dp"
                     android:paddingLeft="4dp"
                     android:paddingRight="4dp"
                     android:background="#0cce62"

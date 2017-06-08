@@ -16,12 +16,26 @@ public class HelpActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_help);
         addUIElement();
+        btnHDSD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HelpActivity.this,HuongDanSuDungActivity.class);
+                startActivity(intent);
+            }
+        });
         btnCanhBao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HelpActivity.this,NewsActivity.class);
                 startActivity(intent);
 
+            }
+        });
+        btnTacGia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HelpActivity.this,AuthorActivity.class);
+                startActivity(intent);
             }
         });
     }

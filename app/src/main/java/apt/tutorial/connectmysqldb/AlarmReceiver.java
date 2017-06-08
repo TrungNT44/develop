@@ -45,26 +45,20 @@ public class AlarmReceiver extends BroadcastReceiver {
     public static final String alaramIntent = "apt.tutorial.connectmysqldb.alarmIntent";
     public static final int alarmIntentCode = 000054310;
     public static boolean flag = false;
-    MediaPlayer mediaPlayer = new MediaPlayer();
 
     private String TAG = AlarmReceiver.class.getSimpleName();
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        new DocJSON().execute("http://192.168.1.104:80/trung/display.php");
+        new DocJSON().execute("http://192.168.1.103:80/trung/display.php");
         if(flag == true) {
             Log.d("trung","onReceive");
-            String alarm = intent.getExtras().getString("alarm");
-            mediaPlayer = MediaPlayer.create(context, R.raw.siro);
-            //mediaPlayer.start();
-            //Intent intent1 = new Intent(context, Music.class);
-            //intent1.putExtra("alarm", alarm);
-            //context.startService(intent1);
             Notification.Builder mBuilder =
                     new Notification.Builder(context)
                             .setSmallIcon(R.drawable.ball_green)
-                            .setContentTitle("My notification")
-                            .setContentText("Hello World!");
+                            .setContentTitle("Nhà kính")
+                            .setContentText("Nhiệt độ đang nằm ngoài giá trị thiết lập cảnh báo!")
+                            .setAutoCancel(true);
             mBuilder.setSound(Settings.System.DEFAULT_NOTIFICATION_URI);
             Intent resultIntent = new Intent(context, HelpActivity.class);
 // Because clicking the notification opens a new ("special") activity, there's

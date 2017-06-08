@@ -38,11 +38,9 @@
             </intent-filter>
         </receiver>
 
-        <service
-            android:name=".Music"
-            android:enabled="true" />
-
-        <activity android:name=".HelpActivity"></activity>
+        <activity android:name=".HelpActivity" />
+        <activity android:name=".HuongDanSuDungActivity" />
+        <activity android:name=".AuthorActivity"></activity>
     </application>
 
 </manifest>
