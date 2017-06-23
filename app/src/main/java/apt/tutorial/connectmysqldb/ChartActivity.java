@@ -98,7 +98,7 @@ public class ChartActivity extends Activity {
                         entries.clear();
                         labels.clear();
 
-                        new DocJSON2().execute("http://192.168.1.103:80/trung/selectToChart.php");
+                        new DocJSON2().execute("http://10.11.4.125:80/trung/selectToChart.php");
                         // goi ham gui cac gia tri len trang php
                     }
                 });

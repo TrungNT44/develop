@@ -61,7 +61,7 @@ public class MainActivity extends TabActivity {
     private int year, month, day;
     Button btnPast,btnPickDate;
     TextView tvDate;
-    EditText editTmp, editHum, editStt;
+    EditText editTmp, editHum, editSoil,editLight;
     ArrayList<String> labels = new ArrayList<String>();
 
     @Override
@@ -99,7 +99,8 @@ public class MainActivity extends TabActivity {
         tvDate = (TextView) findViewById(R.id.tvDate);
         editTmp = (EditText) findViewById(R.id.editTmp);
         editHum = (EditText) findViewById(R.id.editHum);
-        editStt = (EditText) findViewById(R.id.editStt);
+        editSoil = (EditText) findViewById(R.id.editSoil);
+        editLight = (EditText) findViewById(R.id.editLight);
         btnPast = (Button) findViewById(R.id.btnGetData);
         btnPast.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,7 +108,7 @@ public class MainActivity extends TabActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        new DocJSON().execute("http://192.168.1.103:80/trung/select.php");
+                        new DocJSON().execute("http://192.168.1.104:80/trung/select.php");
                         // goi ham gui cac gia tri len trang php
                     }
                 });
@@ -116,7 +117,7 @@ public class MainActivity extends TabActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        new DocJSON().execute("http://192.168.1.103:80/trung/display.php");
+                        new DocJSON().execute("http://192.168.1.104:80/trung/display.php");
                         // goi ham gui cac gia tri len trang php
                     }
                 });
@@ -216,7 +217,7 @@ public class MainActivity extends TabActivity {
                     //tvDate.setText("");
                     editTmp.setText("");
                     editHum.setText("");
-                    editStt.setText("");
+                    editSoil.setText("");
                     for (int i = 0; i < mangJSON.length(); i++) {
                         JSONObject objectJSON = mangJSON.getJSONObject(i);
                         if (!objectJSON.get("date").toString().equals("0000-00-00")) {
@@ -228,7 +229,8 @@ public class MainActivity extends TabActivity {
                                 startSchedulerAlarm();
                             }*/
                             editHum.setText(objectJSON.get("humid").toString());
-                            editStt.setText(objectJSON.get("stt").toString());
+                            editSoil.setText(objectJSON.get("soil").toString());
+                            editLight.setText(objectJSON.get("light").toString());
                         } else
                             Toast.makeText(MainActivity.this, "Không có dữ liệu", Toast.LENGTH_SHORT).show();
                     }

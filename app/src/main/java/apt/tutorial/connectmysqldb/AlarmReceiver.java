@@ -50,7 +50,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        new DocJSON().execute("http://192.168.1.103:80/trung/display.php");
+        new DocJSON().execute("http://192.168.1.104:80/trung/display.php");
         if(flag == true) {
             Log.d("trung","onReceive");
             Notification.Builder mBuilder =

@@ -109,7 +109,7 @@
                     <TableRow>
 
                         <TextView
-                            android:id="@+id/tvStt"
+                            android:id="@+id/tvSoil"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Độ ẩm đất"
@@ -117,7 +117,7 @@
                             android:textSize="20dp" />
 
                         <EditText
-                            android:id="@+id/editStt"
+                            android:id="@+id/editSoil"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="#f11d01" />
@@ -125,7 +125,7 @@
                     <TableRow>
 
                         <TextView
-                            android:id="@+id/tvMoisHumid"
+                            android:id="@+id/tvLight"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Ánh sáng"
@@ -133,7 +133,7 @@
                             android:textSize="20dp" />
 
                         <EditText
-                            android:id="@+id/editMoisHumid"
+                            android:id="@+id/editLight"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="#f11d01" />
